@@ -1,0 +1,139 @@
+<!--  -->
+
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<meta charset="utf-8">
+<title>WOOK</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1">
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+
+{{>include/navagation}}
+<!-- 로그인 여부 -->
+	<div class="container" id="main">
+		<div class="col-md-12 col-sm-12 col-lg-10 col-lg-offset-1">
+			<div class="panel panel-default qna-list">
+				<ul class="list">
+				
+				<!--  -->
+				<!-- 게시판 글 리스트 -->
+					{{#question}}
+					<li>
+						<div class="wrap">
+							<div class="main">
+								<strong class="subject"> <a href="/questions/{{id}}">{{#title}}{{title}}{{/title}}</a>
+								</strong>
+								<div class="auth-info">
+									<i class="icon-add-comment"></i> <span class="time"> </span>
+
+									<svg xmlns="https://www.w3.org/2000/svg" width="16" height="16"
+										fill="currentColor" class="bi bi-person-fill"
+										viewBox="0 0 16 16">
+  <path
+											d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+</svg>
+
+								<a href="#" class="author">{{#writers.userId}}{{writers.userId}}{{/writers.userId}}
+
+									 </a>
+									<svg xmlns="https://www.w3.org/2000/svg" width="16" height="16"
+										fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+  <path
+											d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+</svg>
+									{{view}}
+									
+									
+									
+<svg xmlns="https://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+  <path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  <path d="m2.165 15.803.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"/>
+</svg> {{reply}}  <span class="article-header-time" title="퍼머링크">
+													{{formatCreateDate}} <i class="icon-link"></i>
+												</span>
+								</div>
+								<div class="reply" title="댓글">
+									<i class="icon-reply"></i>
+									
+								</div>
+							</div>
+						</div>
+					
+					</li>
+					<li>{{/question}}
+					
+					<!-- 게시판 글 리스트 끝 -->
+
+
+                        <!-- 글쓰기 -->
+						<form class="submit-write" method="get" action="/questions/form">
+
+							<input type="submit" class="btn btn-success pull-right"
+								value="글쓰기">
+
+							<div class="clearfix" />
+
+						</form> 
+						
+						
+						<!-- 페이징 시작 -->
+
+						<nav style="text-align: center;">
+							<ul class="pagination">
+                               
+                               <!-- 이전 페이지 -->
+								<li>
+								{{#hasPrev}} 
+								<a href="?keyword={{keyword}}&page={{previous}}" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								
+								</a> 
+								
+								{{/hasPrev}}
+								  <!-- 이전 페이지 -->
+								  
+							    <!-- 이전 페이지 없을때-->
+								 {{^hasPrev}}
+								 
+								 
+								  {{/hasPrev}}
+								    <!-- 이전 페이지 없을때-->
+								  
+								</li>
+
+								<li>
+								   <!-- 다음 페이지 -->
+								{{#hasNext}}
+								
+								 <a	href="?keyword={{keyword}}&page={{next}}" aria-label="Next"> 
+								 <span aria-hidden="true">&raquo;</span>
+								</a> 
+								
+								{{ /hasNext}} 
+								 <!-- 다음 페이지 -->
+								 
+							<!-- 다음 페이지 없을때-->
+								{{^hasNext}} 
+								
+								
+								{{ /hasNext}}
+                             <!-- 다음 페이지 없을때-->
+
+								</li>
+
+							</ul>
+	                  <!-- 페이징 끝 -->
+						</nav> <!-- script references --> 
+						<script src="js/jquery-2.2.0.min.js"></script>
+						<script src="js/bootstrap.min.js"></script> 
+						<script src="js/scripts.js"></script>
+</body>
+</html>
