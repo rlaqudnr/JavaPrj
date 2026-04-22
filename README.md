@@ -34,3 +34,10 @@
 **5.** 회원탈퇴
 
 **`회원탈퇴시 본인이 쓴 글과 댓글을 모두 삭제하고 탈퇴`를 하도록 설계**
+
+## 3. DB 설계
+<img width="605" height="484" alt="image" src="https://github.com/user-attachments/assets/33965cb5-cf19-4c29-a163-7364d3b0c4d9" />
+
+
+
+
